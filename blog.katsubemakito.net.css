@@ -13,6 +13,19 @@ iframe{
  margin: 5px;
 }
 
+dl{
+ margin-bottom: 30px;
+}
+dd{
+  margin-left: 30px;
+  margin-bottom: 20px;
+}
+
+/*----- スクロール -----*/
+html {
+ scroll-behavior: smooth;
+}
+
 /*----- 記事内の画像に枠線 -----*/
 .entry-content img[class*="wp-image-"]{
  border: 1px solid #ddd;
@@ -134,4 +147,26 @@ div.button1 a{
 /*----- コメントボタン -----*/
 .leave-comment-title{
  border-radius: 5px;
+}
+
+/*----- ブロック -----*/
+.ws-navblock{
+ margin: 20px 3px;;
+}
+
+/*----- アラート -----*/
+.ws-alert1{
+ background-color: lightpink;
+ border: 3px solid pink;
+ border-radius: 3px;
+ width: 100%;
+ padding: 10px;
+ margin: 10px 1px;
+}
+
+/*----- シリーズ一覧に戻るリンク -----*/
+.ws-navblock{
+ background-color: #E6FDFF;
+ border-radius: 3px;
+ padding: 10px;
 }
