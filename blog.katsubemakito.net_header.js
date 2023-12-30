@@ -30,14 +30,14 @@ document.addEventListener('DOMContentLoaded', ()=>{
     return;
   }
   // /20xx -> /archive/20xx
-  if(path.match(/^\/20\d{2}$/)){
+  else if(path.match(/^\/20\d{2}$/)){
     showMessage();
     const year = path.replace(/^\//, '');
     location.href = `/archive/${year}`;
     return;
   }
   // /20xx/xx -> /archive/20xx/xx
-  if(path.match(/^\/20\d{2}\/\d{2}$/)){
+  else if(path.match(/^\/20\d{2}\/\d{2}$/)){
     showMessage();
     const year_month = path.replace(/^\//, '');
     location.href = `/archive/${year_month}`;
