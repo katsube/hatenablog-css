@@ -7,39 +7,46 @@ document.addEventListener('DOMContentLoaded', ()=>{
   }
 
   const entryContent = document.querySelector('.entry-content');
-  const h1  = entryContent.querySelector('h1');
-  const h1p = entryContent.querySelector('p');
+  if(!entryContent){
+    return;
+  }
 
   //----------------------------------------
-  // リダイレクト（WordPress対応）
+  // リダイレクト
   //----------------------------------------
   const path = location.pathname;
+  const showMessage = ()=>{
+    const h1  = entryContent.querySelector('h1');
+    const h1p = entryContent.querySelector('p');
+    h1.textContent = 'このページは移動しました'
+    h1p.textContent = '自動的に移動します。しばらくお待ちください。';
+  };
 
   // /tag/xxx -> /archive/category/xxx
   if(path.match(/^\/tag\/.+/)){
-    h1.textContent = 'このページは移動しました'
-    h1p.textContent = '自動的に移動します。しばらくお待ちください。';
-
+    showMessage();
     const tag = path.replace(/^\/tag\//, '');
     location.href = `/archive/category/${tag}`;
     return;
   }
   // /20xx -> /archive/20xx
   if(path.match(/^\/20\d{2}$/)){
-    h1.textContent = 'このページは移動しました'
-    h1p.textContent = '自動的に移動します。しばらくお待ちください。';
-
+    showMessage();
     const year = path.replace(/^\//, '');
     location.href = `/archive/${year}`;
+    return;
+  }
+  // /20xx/xx -> /archive/20xx/xx
+  if(path.match(/^\/20\d{2}\/\d{2}$/)){
+    showMessage();
+    const year_month = path.replace(/^\//, '');
+    location.href = `/archive/${year_month}`;
     return;
   }
 
   //----------------------------------------
   // 404表示
   //----------------------------------------
-  if(!entryContent){
-    return;
-  }
   const h2 = document.createElement('h2');
   h2.appendChild(document.createTextNode('最近アクセス数の多い記事'));
   h2.setAttribute('style', 'font-size:1.2em;');
