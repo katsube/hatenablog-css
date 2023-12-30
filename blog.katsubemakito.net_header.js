@@ -22,6 +22,9 @@ document.addEventListener('DOMContentLoaded', ()=>{
     h1p.textContent = '自動的に移動します。しばらくお待ちください。';
   };
 
+  //---------------------
+  // WordPress
+  //---------------------
   // /tag/xxx -> /archive/category/xxx
   if(path.match(/^\/tag\/.+/)){
     showMessage();
@@ -43,6 +46,17 @@ document.addEventListener('DOMContentLoaded', ()=>{
     location.href = `/archive/${year_month}`;
     return;
   }
+  //---------------------
+  // 静的ページ
+  //---------------------
+  // /static/〜 -> https://static.blog.katsubemakito.net/〜
+  else if(path.match(/^\/static\/.+/)){
+    showMessage();
+    const static_path = path.replace(/^\/static\//, '');
+    location.href = `https://static.blog.katsubemakito.net/${static_path}`;
+    return;
+  }
+
 
   //----------------------------------------
   // 404表示
